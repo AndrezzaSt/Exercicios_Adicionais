@@ -32,31 +32,35 @@ public class Main {
         return str;
     }
 
-    /*
-     * Escreva um método em Java que recebe duas strings A e B e retorna
-        quantas ocorrências de B ocorrem em A.
-        A-> “abcd abc aabc baa abcaa”
-        B -> “aa”
-        “aa”' aparece 3 vezes em “abcd abc aabc baa abcaa”
-     */
-    public static void strB_ocurrences_in_strA(String A, String B) {
-        String temp[] = A.split(" ");
-        int count = 0;
 
-        for (int i = 0; i < temp.length; i++) {
-            if (B.equals(temp[i]))
-                count++;
-        }
-        System.out.println("The string is: " + B);
+    public static void strB_ocurrences_in_strA(String A, String B) {
+        int count = ( B.split(A, -1).length ) - 1;
+        System.out.println("Frase: " + B);
         System.out.println("A palavra " + A + " ocorre " + count + " vezes na string acima");
     }
 
-    public static void main(String[] args) {
-        //Teste_Elevador();
+    public static void triplas_sum(int[] nums, int sum ){
+        for (int i = 0; i < nums.length - 2; i++) {
+            for(int j = i + 1; j < nums.length - 1; j++) {
+                for( int k = j + 1; k < nums.length; k++) {
+                    if (nums[i] + nums[j] + nums[k] == sum) {
+                        System.out.print("( " + nums[i] + ", " + nums[j] + ", " + nums[k] + " )");
+                    }
+                }
+            }
+        }
 
+
+    }
+    public static void main(String[] args) {
+        Teste_Elevador();
         //Número fornecido 7: PHPPHPPHPPHPPHPPHPPHP
         String_Rep("PHP", 7);
-        strB_ocurrences_in_strA("batatinha", "batatinha 1 2 3");
+        //A palavra aa ocorre 3 vezes na string acima
+        strB_ocurrences_in_strA("aa", "abcd abc aabc baa abcaa");
+        //as triplas somadas devem resultar na soma
+        int[] nums = { 1, 6, 3, 0, 8, 4, 1, 7 };
+        triplas_sum(nums, 7);
     }
 
 }
